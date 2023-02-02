@@ -2,7 +2,7 @@ package com.emanuel.retrofit
 
 import com.google.gson.annotations.SerializedName
 
-data class User(
+data class UserResponse(
     @SerializedName("id") val id: Int?,
     @SerializedName("email") val email: String?,
     @SerializedName("first_name") val firstName: String?,
