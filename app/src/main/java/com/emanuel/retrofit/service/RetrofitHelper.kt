@@ -1,4 +1,4 @@
-package com.emanuel.retrofit
+package com.emanuel.retrofit.service
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

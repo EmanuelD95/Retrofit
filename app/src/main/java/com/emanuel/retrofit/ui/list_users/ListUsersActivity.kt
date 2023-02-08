@@ -1,4 +1,4 @@
-package com.emanuel.retrofit.users
+package com.emanuel.retrofit.ui.list_users
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -9,13 +9,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.emanuel.retrofit.*
 import com.emanuel.retrofit.databinding.ActivityUsersBinding
 import com.emanuel.retrofit.model.User
-import com.emanuel.retrofit.single_user.SingleUserActivity
-import com.emanuel.retrofit.single_user.adapter.UserAdapter
+import com.emanuel.retrofit.response.DataListUsersResponse
+import com.emanuel.retrofit.response.UserResponse
+import com.emanuel.retrofit.service.ApiService
+import com.emanuel.retrofit.service.RetrofitHelper
+import com.emanuel.retrofit.ui.single_user.SingleUserActivity
+import com.emanuel.retrofit.ui.single_user.adapter.UserAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class UsersActivity : AppCompatActivity() {
+class ListUsersActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityUsersBinding
     //var userList: List<UserResponse?>?= emptyList()
@@ -43,7 +47,7 @@ class UsersActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<DataListUsersResponse>, t: Throwable) {
-                Toast.makeText(this@UsersActivity, t.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ListUsersActivity, t.message, Toast.LENGTH_SHORT).show()
             }
 
         })
@@ -57,7 +61,6 @@ class UsersActivity : AppCompatActivity() {
 
     private fun onItemClicked(user: User){
         //Toast.makeText(this, user.id.toString(), Toast.LENGTH_SHORT).show()
-
         val id: Int = user.id
 
         val intent = Intent( this, SingleUserActivity::class.java)

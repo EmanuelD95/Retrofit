@@ -1,4 +1,4 @@
-package com.emanuel.retrofit.single_user.adapter
+package com.emanuel.retrofit.ui.single_user.adapter
 
 import android.content.DialogInterface.OnClickListener
 import android.view.LayoutInflater

@@ -1,7 +1,6 @@
-package com.emanuel.retrofit
+package com.emanuel.retrofit.response
 
 import com.emanuel.retrofit.model.DataListUsers
-import com.emanuel.retrofit.model.User
 import com.google.gson.annotations.SerializedName
 
 class DataListUsersResponse (

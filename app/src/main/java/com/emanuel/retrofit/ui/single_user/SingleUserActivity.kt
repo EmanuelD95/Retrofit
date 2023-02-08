@@ -1,4 +1,4 @@
-package com.emanuel.retrofit.single_user
+package com.emanuel.retrofit.ui.single_user
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
@@ -7,11 +7,13 @@ import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.emanuel.retrofit.*
 import com.emanuel.retrofit.databinding.ActivitySingleUserBinding
+import com.emanuel.retrofit.response.DataUserResponse
+import com.emanuel.retrofit.response.UserResponse
+import com.emanuel.retrofit.service.ApiService
+import com.emanuel.retrofit.service.RetrofitHelper
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class SingleUserActivity : AppCompatActivity() {
 

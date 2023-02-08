@@ -1,10 +1,9 @@
-package com.emanuel.retrofit.single_user.adapter
+package com.emanuel.retrofit.ui.single_user.adapter
 
 import android.annotation.SuppressLint
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.emanuel.retrofit.UserResponse
 import com.emanuel.retrofit.databinding.ItemUserBinding
 import com.emanuel.retrofit.model.User
 

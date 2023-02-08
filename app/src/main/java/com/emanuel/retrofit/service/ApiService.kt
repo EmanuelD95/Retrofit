@@ -1,5 +1,7 @@
-package com.emanuel.retrofit
+package com.emanuel.retrofit.service
 
+import com.emanuel.retrofit.response.DataListUsersResponse
+import com.emanuel.retrofit.response.DataUserResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
