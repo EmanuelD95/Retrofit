@@ -5,10 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.emanuel.retrofit.ApiService
-import com.emanuel.retrofit.DataUserResponse
-import com.emanuel.retrofit.R
-import com.emanuel.retrofit.UserResponse
+import com.emanuel.retrofit.*
 import com.emanuel.retrofit.databinding.ActivitySingleUserBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,14 +22,10 @@ class SingleUserActivity : AppCompatActivity() {
         binding = ActivitySingleUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Retrofit
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://reqres.in/api/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        val id = intent.getIntExtra("BUNDLE_ID", 2)
 
-        val api = retrofit.create(ApiService::class.java)
-        api.getUser().enqueue(object: Callback<DataUserResponse> {
+        val api = RetrofitHelper.getInstance().create(ApiService::class.java)
+        api.getUser(id).enqueue(object: Callback<DataUserResponse> {
             @SuppressLint("SetTextI18n")
             override fun onResponse(call: Call<DataUserResponse>, response: Response<DataUserResponse>) {
                 val data: DataUserResponse? = response.body()
