@@ -8,7 +8,7 @@ class DataListUsersResponse (
     companion object {
         fun toDataListUsers(response: DataListUsersResponse): DataListUsers {
             return DataListUsers(
-                listUsers = response.listUsersResponse.let { UserResponse.toListUser(it!!) }
+                listUsers = response.listUsersResponse.let { UserResponse.toListUsers(it!!) }
             )
         }
     }

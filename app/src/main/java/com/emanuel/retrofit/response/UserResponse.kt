@@ -20,7 +20,7 @@ class UserResponse(
             )
         }
 
-        fun toListUser(listUsersResponse: List<UserResponse>): List<User>{
+        fun toListUsers(listUsersResponse: List<UserResponse>): List<User>{
             val list = ArrayList<User>()
             for(dataResponse in listUsersResponse) {
                 list.add(toUser(dataResponse))

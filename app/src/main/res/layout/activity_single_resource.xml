@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.single_resources.SingleResourceActivity">
+
+    <View
+        android:id="@+id/vColor"
+        android:layout_width="407dp"
+        android:layout_height="251dp"
+        android:background="@color/white"
+        tools:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/vColor"
+        app:layout_constraintEnd_toEndOf="@+id/vColor"
+        app:layout_constraintStart_toStartOf="@+id/vColor"
+        app:layout_constraintTop_toTopOf="@+id/vColor"
+        tools:text="Fuchsia rose" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="26dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vColor"
+        tools:text="ID: 2" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvYeas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="28dp"
+        android:textSize="26dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vColor"
+        tools:text="YEAS: 2001" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="52dp"
+        android:textSize="26dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvId"
+        tools:text="VALUE: 17-2031" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

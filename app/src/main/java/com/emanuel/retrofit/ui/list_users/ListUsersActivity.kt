@@ -14,7 +14,7 @@ import com.emanuel.retrofit.response.UserResponse
 import com.emanuel.retrofit.service.ApiService
 import com.emanuel.retrofit.service.RetrofitHelper
 import com.emanuel.retrofit.ui.single_user.SingleUserActivity
-import com.emanuel.retrofit.ui.single_user.adapter.UserAdapter
+import com.emanuel.retrofit.ui.list_users.adapter.UserAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -42,7 +42,7 @@ class ListUsersActivity : AppCompatActivity() {
 
                 //val listUsers: List<UserResponse?>? = data?.listUsers
 
-                userList = UserResponse.toListUser(data?.listUsersResponse!!)
+                userList = UserResponse.toListUsers(data?.listUsersResponse!!)
                 setupRecyclerView()
             }
 
@@ -64,7 +64,7 @@ class ListUsersActivity : AppCompatActivity() {
         val id: Int = user.id
 
         val intent = Intent( this, SingleUserActivity::class.java)
-        intent.putExtra("BUNDLE_ID", id)
+        intent.putExtra("BUNDLE_ID_USER", id)
         startActivity(intent)
     }
 }

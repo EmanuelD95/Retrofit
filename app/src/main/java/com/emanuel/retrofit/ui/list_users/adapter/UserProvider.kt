@@ -1,4 +1,4 @@
-package com.emanuel.retrofit.ui.single_user.adapter
+package com.emanuel.retrofit.ui.list_users.adapter
 
 import com.emanuel.retrofit.model.User
 

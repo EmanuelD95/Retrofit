@@ -24,7 +24,7 @@ class SingleUserActivity : AppCompatActivity() {
         binding = ActivitySingleUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val id = intent.getIntExtra("BUNDLE_ID", 2)
+        val id = intent.getIntExtra("BUNDLE_ID_USER", 1)
 
         val api = RetrofitHelper.getInstance().create(ApiService::class.java)
         api.getUser(id).enqueue(object: Callback<DataUserResponse> {
