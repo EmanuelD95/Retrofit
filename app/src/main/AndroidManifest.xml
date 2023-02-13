@@ -14,10 +14,10 @@
         android:theme="@style/Theme.Retrofit"
         tools:targetApi="31">
         <activity
-            android:name=".ui.single_resources.SingleResourceActivity"
-            android:exported="true" />
+            android:name=".ui.login.RegisterActivity"
+            android:exported="false" />
         <activity
-            android:name=".ui.StartActivity"
+            android:name=".ui.login.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,12 +26,18 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ui.single_resources.SingleResourceActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.StartActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.list_resources.ListResourcesActivity"
             android:exported="true" />
         <activity
             android:name=".ui.list_users.ListUsersActivity"
-            android:exported="true"></activity>
-        <activity android:name=".ui.single_user.SingleUserActivity"></activity>
+            android:exported="true" />
+        <activity android:name=".ui.single_user.SingleUserActivity" />
     </application>
 
 </manifest>
