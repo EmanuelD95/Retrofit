@@ -19,7 +19,7 @@ interface ApiService {
     @GET("listResources/{id}")
     fun getResources(@Path("id") id: Int): Call<DataResourceResponse>
 
-        @GET("unknown")
+    @GET("unknown")
     fun getListResources(): Call<DataListResourcesResponse>
 }
 
