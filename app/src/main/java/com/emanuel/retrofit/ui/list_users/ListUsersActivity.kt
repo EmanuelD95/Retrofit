@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.emanuel.retrofit.*
@@ -13,8 +14,10 @@ import com.emanuel.retrofit.response.DataListUsersResponse
 import com.emanuel.retrofit.response.UserResponse
 import com.emanuel.retrofit.service.ApiService
 import com.emanuel.retrofit.service.RetrofitHelper
+import com.emanuel.retrofit.ui.NewUserActivity
 import com.emanuel.retrofit.ui.single_user.SingleUserActivity
 import com.emanuel.retrofit.ui.list_users.adapter.UserAdapter
+import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -31,6 +34,14 @@ class ListUsersActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         getData()
+
+        binding.fabAdd.setOnClickListener { view ->
+            /*Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+                .setAction("Action", null)
+                .show()*/
+            val intent = Intent(this, NewUserActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun getData() {
@@ -67,4 +78,5 @@ class ListUsersActivity : AppCompatActivity() {
         intent.putExtra("BUNDLE_ID_USER", id)
         startActivity(intent)
     }
+
 }
