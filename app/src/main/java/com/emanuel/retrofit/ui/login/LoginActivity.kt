@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import com.emanuel.retrofit.R
 import com.emanuel.retrofit.databinding.ActivityLoginBinding
 import com.emanuel.retrofit.request.UserRequest
 import com.emanuel.retrofit.response.LoginUserResponse
@@ -15,7 +17,7 @@ import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Callback
 
-class LoginActivity : AppCompatActivity(), View.OnClickListener {
+class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
 
@@ -24,52 +26,13 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnLogin.setOnClickListener(this)
-        binding.tvRegister.setOnClickListener(this)
-    }
-    private fun loginUser(user: UserRequest) {
-        val api = RetrofitHelper.getInstance().create(ApiService::class.java)
-        api.loginUser(user).enqueue(object : Callback<LoginUserResponse> {
-            override fun onResponse(call: Call<LoginUserResponse>, response: Response<LoginUserResponse>) {
-                val data: LoginUserResponse? = response.body()
-                Toast.makeText(this@LoginActivity, "${data?.token}", Toast.LENGTH_LONG).show()
-
-                val intent = Intent(this@LoginActivity, StartActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(intent)
-            }
-
-            override fun onFailure(call: Call<LoginUserResponse>, t: Throwable) {
-                Toast.makeText(this@LoginActivity, t.message, Toast.LENGTH_SHORT).show()
-            }
-
-        })
-    }
-    private fun validateLogin(email: String, password: String): Boolean{
-        if (!email.contains("@")) return false
-        if (password.length < 6) return false
-
-        return true
+        addFragment(LoginFragment())
     }
 
-    override fun onClick(v: View?) {
-        when (v){
-            binding.btnLogin -> {
-                val email = binding.etEmail.text.toString()
-                val password = binding.etPassword.text.toString()
-
-                if (validateLogin(email, password)) {
-                    val user = UserRequest(email, password)
-                    loginUser(user)
-                } else {
-                    Toast.makeText(this, "Ingrese datos correctos", Toast.LENGTH_LONG).show()
-                }
-            }
-            binding.tvRegister -> {
-                val intent = Intent( this, RegisterActivity::class.java)
-                startActivity(intent)
-            }
-        }
-
+    private fun addFragment(fragment: Fragment) {
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.add(R.id.fragmentContainer, fragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
 }
