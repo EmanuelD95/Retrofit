@@ -1,4 +1,4 @@
-package com.emanuel.retrofit.ui.list_resources.adapter
+package com.emanuel.retrofit.ui.resources.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.emanuel.retrofit.R
 import com.emanuel.retrofit.model.Resource
 
-class ResourcesAdapter(private val context: Context, private val listResources: List<Resource>, private val onClickListener:(Resource) -> Unit): RecyclerView.Adapter<ResourcesViewHolder>() {
+class ResourcesAdapter(private val listResources: List<Resource>, private val onClickListener:(Resource) -> Unit): RecyclerView.Adapter<ResourcesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResourcesViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -16,7 +16,7 @@ class ResourcesAdapter(private val context: Context, private val listResources: 
 
     override fun onBindViewHolder(holder: ResourcesViewHolder, position: Int) {
         val item = listResources[position]
-        holder.render(context, item, onClickListener)
+        holder.render(item, onClickListener)
     }
 
     override fun getItemCount(): Int {

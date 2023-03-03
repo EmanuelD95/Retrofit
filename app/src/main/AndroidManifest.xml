@@ -26,13 +26,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.single_resources.SingleResourceActivity"
+            android:name=".ui.resources.ResourceActivity"
             android:exported="true" />
         <activity
             android:name=".ui.StartActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.list_resources.ListResourcesActivity"
             android:exported="true" />
         <activity
             android:name=".ui.list_users.ListUsersActivity"

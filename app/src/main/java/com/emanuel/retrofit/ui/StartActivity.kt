@@ -4,8 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.emanuel.retrofit.databinding.ActivityStartBinding
-import com.emanuel.retrofit.ui.list_resources.ListResourcesActivity
 import com.emanuel.retrofit.ui.list_users.ListUsersActivity
+import com.emanuel.retrofit.ui.resources.ResourceActivity
 
 class StartActivity : AppCompatActivity() {
 
@@ -21,7 +21,7 @@ class StartActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.button2.setOnClickListener {
-            val intent = Intent(this, ListResourcesActivity::class.java)
+            val intent = Intent(this, ResourceActivity::class.java)
             startActivity(intent)
         }
 
