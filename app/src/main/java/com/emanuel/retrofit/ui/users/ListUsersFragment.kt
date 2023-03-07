@@ -1,4 +1,4 @@
-package com.emanuel.retrofit.ui.resources
+package com.emanuel.retrofit.ui.users
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -9,28 +9,30 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.emanuel.retrofit.R
-import com.emanuel.retrofit.databinding.FragmentListResourcesBinding
-import com.emanuel.retrofit.model.Resource
-import com.emanuel.retrofit.response.DataListResourcesResponse
-import com.emanuel.retrofit.response.ResourceResponse
+import com.emanuel.retrofit.databinding.FragmentListUsersBinding
+import com.emanuel.retrofit.model.User
+import com.emanuel.retrofit.response.DataListUsersResponse
+import com.emanuel.retrofit.response.UserResponse
 import com.emanuel.retrofit.service.ApiService
 import com.emanuel.retrofit.service.RetrofitHelper
-import com.emanuel.retrofit.ui.resources.adapter.ResourcesAdapter
+import com.emanuel.retrofit.ui.NewUserFragment
+import com.emanuel.retrofit.ui.users.adapter.UserAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ListResourcesFragment : Fragment() {
+class ListUsersFragment : Fragment() {
 
-    private lateinit var binding: FragmentListResourcesBinding
-    var listResources: List<Resource> = emptyList()
+    private lateinit var binding: FragmentListUsersBinding
+    var listUser: List<User> = emptyList()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentListResourcesBinding.inflate(inflater, container, false)
+        binding = FragmentListUsersBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -38,33 +40,38 @@ class ListResourcesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         getData()
+
+        binding.fabAdd.setOnClickListener {
+            replaceFragment(NewUserFragment())
+        }
     }
 
     private fun getData() {
         val api = RetrofitHelper.getInstance().create(ApiService::class.java)
-        api.getListResources().enqueue(object: Callback<DataListResourcesResponse> {
+        api.getListUsers().enqueue(object : Callback<DataListUsersResponse> {
             @SuppressLint("SetTextI18n")
-            override fun onResponse(call: Call<DataListResourcesResponse>, response: Response<DataListResourcesResponse>) {
-                val data: DataListResourcesResponse? = response.body()
+            override fun onResponse(call: Call<DataListUsersResponse>, response: Response<DataListUsersResponse>) {
+                val data: DataListUsersResponse? = response.body()
 
-                listResources = ResourceResponse.toListResources(data?.listResourcesResponse!!)
+                listUser = UserResponse.toListUsers(data?.listUsersResponse!!)
                 setupRecyclerView()
             }
 
-            override fun onFailure(call: Call<DataListResourcesResponse>, t: Throwable) {
+            override fun onFailure(call: Call<DataListUsersResponse>, t: Throwable) {
                 Toast.makeText(context, t.message, Toast.LENGTH_SHORT).show()
             }
 
         })
     }
+
     private fun setupRecyclerView() {
-        binding.rvListResources.layoutManager = LinearLayoutManager(context)
-        binding.rvListResources.adapter = ResourcesAdapter(listResources) { resource -> onItemClicked(resource) }
+        binding.rvUser.layoutManager = LinearLayoutManager(context)
+        binding.rvUser.adapter = UserAdapter(listUser) { user -> onItemClicked(user) }
     }
 
-    private fun onItemClicked(resource: Resource) {
-        val id: Int = resource.id
-        val fragment = SingleResourcesFragment.newInstance(id)
+    private fun onItemClicked(user: User) {
+        val id: Int = user.id
+        val fragment = SingleUserFragment.newInstance(id)
         replaceFragment(fragment)
     }
 
@@ -74,8 +81,10 @@ class ListResourcesFragment : Fragment() {
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
     }
+
     override fun onDestroy() {
         super.onDestroy()
         activity?.finish()
     }
 }
+

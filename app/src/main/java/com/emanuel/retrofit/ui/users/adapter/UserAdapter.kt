@@ -1,6 +1,5 @@
-package com.emanuel.retrofit.ui.list_users.adapter
+package com.emanuel.retrofit.ui.users.adapter
 
-import android.content.DialogInterface.OnClickListener
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

@@ -1,4 +1,4 @@
-package com.emanuel.retrofit.ui.list_users.adapter
+package com.emanuel.retrofit.ui.users.adapter
 
 import android.annotation.SuppressLint
 import android.view.View
